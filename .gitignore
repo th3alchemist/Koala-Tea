@@ -2,8 +2,10 @@
 
 # compiled output
 /src/main/webapp/Koala-Tea-WebApp/dist
+/src/main/webapp/Koala-Tea-WebApp/bin
 /src/main/webapp/Koala-Tea-WebApp/tmp
 /src/main/webapp/Koala-Tea-WebApp/out-tsc
+
 
 # dependencies
 /src/main/webapp/Koala-Tea-WebApp/node_modules
