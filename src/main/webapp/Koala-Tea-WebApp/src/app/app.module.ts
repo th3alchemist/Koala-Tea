@@ -7,6 +7,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { LoginComponent } from './components/login/login.component';
 import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
+import { CreateUserAccountComponent } from './components/create-user-account/create-user-account.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { CreateRecipeComponent } from './components/create-recipe/create-recipe.
     NavbarComponent,
     LandingComponent,
     LoginComponent,
-    CreateRecipeComponent
+    CreateRecipeComponent,
+    CreateUserAccountComponent
   ],
   imports: [
     BrowserModule,
