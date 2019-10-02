@@ -6,7 +6,7 @@ public class User {
 
 	private int id;//primary key
 	private String email;
-	private byte[] password;
+	private String password;
 	private String fname;
 	private String lname;
 	private String address;
