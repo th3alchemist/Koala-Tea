@@ -9,6 +9,8 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
 
+  logOption:string = "Login"
+
   ngOnInit() {
   }
 
