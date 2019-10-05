@@ -8,16 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="UnitOfMeasurement")
+@Table(name="unit")
 public class Unit {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="Id")
+	@Column(name="id")
 	private int id;
-	@Column(name="Unit")
+	@Column(name="unit")
 	private String unit;
-	
+
 	public Unit() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -69,6 +69,6 @@ public class Unit {
 	public String toString() {
 		return "Unit [id=" + id + ", unit=" + unit + "]";
 	}
-	
-	
+
+
 }

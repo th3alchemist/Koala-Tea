@@ -10,30 +10,30 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="User")
+@Table(name="useraccount")
 public class User {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="Id")
+	@Column(name="id")
 	private int id;//primary key
 	@Column(name="email")
 	private String email;
 	@Column(name="password")
 	private String password;
-	@Column(name="FirstName")
+	@Column(name="firstname")
 	private String fname;
-	@Column(name="LastName")
+	@Column(name="lastname")
 	private String lname;
-	@Column(name="Address")
+	@Column(name="address")
 	private String address;
-	@Column(name="DOB")
-	private Date date_of_birth;
+	@Column(name="dateofbirth")
+	private Date dateOfBirth;
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(int id, String email, String password, String fname, String lname, String address, Date date_of_birth) {
+	public User(int id, String email, String password, String fname, String lname, String address, Date dateOfBirth) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -41,7 +41,7 @@ public class User {
 		this.fname = fname;
 		this.lname = lname;
 		this.address = address;
-		this.date_of_birth = date_of_birth;
+		this.dateOfBirth = dateOfBirth;
 	}
 	public int getId() {
 		return id;
@@ -79,18 +79,18 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Date getDate_of_birth() {
-		return date_of_birth;
+	public Date getdateOfBirth() {
+		return dateOfBirth;
 	}
-	public void setDate_of_birth(Date date_of_birth) {
-		this.date_of_birth = date_of_birth;
+	public void setdateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
-		result = prime * result + ((date_of_birth == null) ? 0 : date_of_birth.hashCode());
+		result = prime * result + ((dateOfBirth == null) ? 0 : dateOfBirth.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((fname == null) ? 0 : fname.hashCode());
 		result = prime * result + id;
@@ -112,10 +112,10 @@ public class User {
 				return false;
 		} else if (!address.equals(other.address))
 			return false;
-		if (date_of_birth == null) {
-			if (other.date_of_birth != null)
+		if (dateOfBirth == null) {
+			if (other.dateOfBirth != null)
 				return false;
-		} else if (!date_of_birth.equals(other.date_of_birth))
+		} else if (!dateOfBirth.equals(other.dateOfBirth))
 			return false;
 		if (email == null) {
 			if (other.email != null)
@@ -144,8 +144,8 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", fname=" + fname + ", lname="
-				+ lname + ", address=" + address + ", date_of_birth=" + date_of_birth + "]";
+				+ lname + ", address=" + address + ", dateOfBirth=" + dateOfBirth + "]";
 	}
-	
-	
+
+
 }
