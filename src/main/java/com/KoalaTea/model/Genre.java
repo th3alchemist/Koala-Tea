@@ -1,4 +1,4 @@
-package com.revature.model;
+package com.KoalaTea.model;
 
 import java.util.List;
 

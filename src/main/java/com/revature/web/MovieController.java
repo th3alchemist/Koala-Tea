@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.model.Joke;
-import com.revature.model.Movie;
+import com.KoalaTea.model.Joke;
+import com.KoalaTea.model.Movie;
 import com.revature.service.MovieService;
 
 

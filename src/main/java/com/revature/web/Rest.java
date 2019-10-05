@@ -2,7 +2,7 @@ package com.revature.web;
 
 import org.springframework.web.client.RestTemplate;
 
-import com.revature.model.Joke;
+import com.KoalaTea.model.Joke;
 
 public class Rest {
 

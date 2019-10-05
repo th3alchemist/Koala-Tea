@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.revature.model.Movie;
+import com.KoalaTea.model.Movie;
 
 /*
  * The JPARepository is an extension of the CRUDRepository. It is designed to wrap
