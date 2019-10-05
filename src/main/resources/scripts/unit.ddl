@@ -1,6 +1,6 @@
 CREATE TABLE unit(
-  id  int,
-  unit text,
+  id   SERIAL PRIMARY KEY,
+  unit TEXT
 );
 
 INSERT INTO UNIT VALUES (1, 'teaspoon');
