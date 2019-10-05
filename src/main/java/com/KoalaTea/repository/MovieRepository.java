@@ -1,4 +1,4 @@
-package com.revature.repository;
+package com.KoalaTea.repository;
 
 import java.util.List;
 

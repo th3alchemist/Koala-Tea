@@ -1,4 +1,4 @@
-package com.revature.service;
+package com.KoalaTea.service;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.KoalaTea.model.Movie;
-import com.revature.repository.MovieRepository;
+import com.KoalaTea.repository.MovieRepository;
 
 @Service(value="movieService")
 public class MovieService {

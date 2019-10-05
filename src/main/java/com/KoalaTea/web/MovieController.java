@@ -1,4 +1,4 @@
-package com.revature.web;
+package com.KoalaTea.web;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.KoalaTea.model.Joke;
 import com.KoalaTea.model.Movie;
-import com.revature.service.MovieService;
+import com.KoalaTea.service.MovieService;
 
 
 /*
