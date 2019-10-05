@@ -32,13 +32,12 @@ public class Recipe {
 	@Column(name="UserId")
 	private int user_id;
 	
-	@OneToMany(mappedBy = "recipe") // inverse side: it has a mappedBy attribute, and can't decide how the association is mapped, since the other side already decided it.
+	@OneToMany(mappedBy = "recipe")
 	@Fetch(FetchMode.JOIN)
-//	@JsonIgnore
 	private List<Ingredient> ingredients;
 	
 	
-	@ManyToOne // owner side: it doesn't have mappedBy, and can decide how the association is mapped: with a join table
+	@ManyToOne
     @JoinTable(name="cook_book_recipe_jt",
                joinColumns={@JoinColumn(name="recipeid")},
                inverseJoinColumns={@JoinColumn(name="cookbookid")})
@@ -46,7 +45,6 @@ public class Recipe {
 
 	public Recipe() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Recipe(int id, String title, String instructions, boolean shared, int user_id,
@@ -159,8 +157,4 @@ public class Recipe {
 		return "Recipe [id=" + id + ", title=" + title + ", instructions=" + instructions + ", shared=" + shared
 				+ ", user_id=" + user_id + ", ingredients=" + ingredients + "]";
 	}
-	
-	
-
-
 }

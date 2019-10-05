@@ -17,22 +17,22 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
-	private int id;//primary key
+	private int id;
 	@Column(name="email")
 	private String email;
 	@Column(name="password")
 	private String password;
-	@Column(name="firstName")
+	@Column(name="firstname")
 	private String fname;
-	@Column(name="lastName")
+	@Column(name="lastname")
 	private String lname;
 	@Column(name="address")
 	private String address;
 	@Column(name="dateofbirth")
 	private Date dateOfBirth;
+	
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public User(int id, String email, String password, String fname, String lname, String address, Date dateOfBirth) {
 		super();

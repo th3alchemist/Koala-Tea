@@ -32,9 +32,8 @@ public class MealPlan {
 	@JoinColumn(name="userid")
 	private User user;
 	
-	@OneToMany(mappedBy = "mealPlan") // inverse side: it has a mappedBy attribute, and can't decide how the association is mapped, since the other side already decided it.
+	@OneToMany(mappedBy = "mealPlan")
 	@Fetch(FetchMode.JOIN)
-//	@JsonIgnore
 	private List<Meal> meals;
 	
 	
