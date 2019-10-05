@@ -1,8 +1,5 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-#configuration file
- src/main/resources/application.properties
-
 # compiled output
 /src/main/webapp/Koala-Tea-WebApp/dist
 /src/main/webapp/Koala-Tea-WebApp/bin
