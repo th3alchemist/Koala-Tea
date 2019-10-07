@@ -15,7 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.KoalaTea.model.Ingredient;
 import com.KoalaTea.model.Joke;
+import com.KoalaTea.model.restModel.SpoonacularIngredient;
+import com.KoalaTea.model.restModel.SpoonacularRecipe;
+import com.KoalaTea.model.restModel.SpoonacularError;
 import com.KoalaTea.model.Unit;
 import com.KoalaTea.service.UnitService;
 
@@ -53,7 +57,6 @@ public class UnitController {
 		return unitService.getUnitById(id);
 	}
 	
-	
 	@GetMapping(value="/byId")
 	public Unit getMovieByIdAgain(@RequestParam int id) {
 		return unitService.getUnitById(id);
@@ -61,6 +64,21 @@ public class UnitController {
 	
 	@GetMapping(value="/joke")
 	public Joke getRandomJoke() {
-		return Rest.getChuckJoke();
+		return Rest.getRandomFoodJoke();
+	}
+	
+	@GetMapping(value="/spoonError")
+	public SpoonacularError getSpoon() {
+		return Rest.getSpoon();
+	}
+	
+	@GetMapping(value="/spoonIngredient")
+	public SpoonacularIngredient getSpoonIngredient() {
+		return Rest.getSpoonIngredient(9266);
+	}
+	
+	@GetMapping(value="/spoonRecipe")
+	public SpoonacularRecipe getSpoonRecipe() {
+		return Rest.getSpoonRecipe();
 	}
 }

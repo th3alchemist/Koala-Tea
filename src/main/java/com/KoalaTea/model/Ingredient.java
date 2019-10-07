@@ -1,7 +1,5 @@
 package com.KoalaTea.model;
 
-import java.util.Locale.Category;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

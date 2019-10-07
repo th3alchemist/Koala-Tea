@@ -2,39 +2,33 @@ package com.KoalaTea.model;
 
 public class Joke {
 
-	private String type;
-	private Value value;
+	private String text;
 	
 	public Joke() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-	
-	public Joke(String type, Value value) {
+
+	public Joke(String text) {
 		super();
-		this.type = type;
-		this.value = value;
+		this.text = text;
 	}
-	public String getType() {
-		return type;
+
+	public String getText() {
+		return text;
 	}
-	public void setType(String type) {
-		this.type = type;
+
+	public void setText(String text) {
+		this.text = text;
 	}
-	public Value getValue() {
-		return value;
-	}
-	public void setValue(Value value) {
-		this.value = value;
-	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((type == null) ? 0 : type.hashCode());
-		result = prime * result + ((value == null) ? 0 : value.hashCode());
+		result = prime * result + ((text == null) ? 0 : text.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -44,20 +38,16 @@ public class Joke {
 		if (getClass() != obj.getClass())
 			return false;
 		Joke other = (Joke) obj;
-		if (type == null) {
-			if (other.type != null)
+		if (text == null) {
+			if (other.text != null)
 				return false;
-		} else if (!type.equals(other.type))
-			return false;
-		if (value == null) {
-			if (other.value != null)
-				return false;
-		} else if (!value.equals(other.value))
+		} else if (!text.equals(other.text))
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
-		return "Joke [type=" + type + ", value=" + value + "]";
+		return "Joke [text=" + text + "]";
 	}
 }
