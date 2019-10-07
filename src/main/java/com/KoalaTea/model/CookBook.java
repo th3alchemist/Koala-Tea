@@ -32,12 +32,10 @@ public class CookBook {
 
 	@OneToMany(mappedBy = "cookBook") // inverse side: it has a mappedBy attribute, and can't decide how the association is mapped, since the other side already decided it.
 	@Fetch(FetchMode.JOIN)
-//	@JsonIgnore
 	private List<Recipe> recipes;
 
 	public CookBook() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public CookBook(int id, String title, String description, boolean shared, int user_id, List<Recipe> recipes) {
@@ -83,7 +81,7 @@ public class CookBook {
 	}
 
 	public int getUser_id() {
-		return userid;
+		return this.userid;
 	}
 
 	public void setUser_id(int user_id) {
@@ -149,6 +147,4 @@ public class CookBook {
 		return "CookBook [id=" + id + ", title=" + title + ", description=" + description + ", shared=" + shared
 				+ ", user_id=" + userid + ", recipes=" + recipes + "]";
 	}
-	
-	
 }

@@ -20,7 +20,6 @@ public class Unit {
 
 	public Unit() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public Unit(int id, String unit) {
 		super();
@@ -69,6 +68,4 @@ public class Unit {
 	public String toString() {
 		return "Unit [id=" + id + ", unit=" + unit + "]";
 	}
-
-
 }

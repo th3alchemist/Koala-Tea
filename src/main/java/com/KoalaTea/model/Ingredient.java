@@ -28,7 +28,7 @@ public class Ingredient {
 	@JoinColumn(name="unitid")
 	private Unit unit;
 	
-	@ManyToOne // owner side: it doesn't have mappedBy, and can decide how the association is mapped: with a join table
+	@ManyToOne
     @JoinTable(name="recipeingredientjt",
                joinColumns={@JoinColumn(name="ingredientid")},
                inverseJoinColumns={@JoinColumn(name="recipeid")})

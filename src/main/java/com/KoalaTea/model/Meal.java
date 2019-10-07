@@ -27,8 +27,8 @@ public class Meal {
 	@Column(name="time")
 	private Time time;
 	
-	@ManyToOne // owner side: it doesn't have mappedBy, and can decide how the association is mapped: with a join table
-    @JoinTable(name="mealplanmealjt",
+	@ManyToOne
+  @JoinTable(name="mealplanmealjt",
                joinColumns={@JoinColumn(name="mealid")},
                inverseJoinColumns={@JoinColumn(name="mealplanid")})
     private MealPlan mealPlan;
@@ -36,9 +36,7 @@ public class Meal {
 
 	public Meal() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
-
 
 	public Meal(int id, String title, String course, Time time, MealPlan mealPlan) {
 		super();
@@ -152,10 +150,5 @@ public class Meal {
 	public String toString() {
 		return "Meal [id=" + id + ", title=" + title + ", course=" + course + ", time=" + time + ", mealPlan="
 				+ mealPlan + "]";
-	}
-	
-	
-	
-	
-	
+	}	
 }
