@@ -28,7 +28,7 @@ public class CookBook {
 	@Column(name="public")
 	private boolean shared;
 	@Column(name="userid")
-	private int user_id;
+	private int userid;
 
 	@OneToMany(mappedBy = "cookBook") // inverse side: it has a mappedBy attribute, and can't decide how the association is mapped, since the other side already decided it.
 	@Fetch(FetchMode.JOIN)
@@ -46,7 +46,7 @@ public class CookBook {
 		this.title = title;
 		this.description = description;
 		this.shared = shared;
-		this.user_id = user_id;
+		this.userid = user_id;
 		this.recipes = recipes;
 	}
 
@@ -83,11 +83,11 @@ public class CookBook {
 	}
 
 	public int getUser_id() {
-		return user_id;
+		return userid;
 	}
 
 	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+		this.userid = user_id;
 	}
 
 	public List<Recipe> getRecipes() {
@@ -107,7 +107,7 @@ public class CookBook {
 		result = prime * result + ((recipes == null) ? 0 : recipes.hashCode());
 		result = prime * result + (shared ? 1231 : 1237);
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
-		result = prime * result + user_id;
+		result = prime * result + userid;
 		return result;
 	}
 
@@ -139,7 +139,7 @@ public class CookBook {
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
-		if (user_id != other.user_id)
+		if (userid != other.userid)
 			return false;
 		return true;
 	}
@@ -147,7 +147,7 @@ public class CookBook {
 	@Override
 	public String toString() {
 		return "CookBook [id=" + id + ", title=" + title + ", description=" + description + ", shared=" + shared
-				+ ", user_id=" + user_id + ", recipes=" + recipes + "]";
+				+ ", user_id=" + userid + ", recipes=" + recipes + "]";
 	}
 	
 	
