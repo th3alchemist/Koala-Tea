@@ -1,8 +1,8 @@
-package com.revature.web;
+package com.KoalaTea.web;
 
 import org.springframework.web.client.RestTemplate;
 
-import com.revature.model.Joke;
+import com.KoalaTea.model.Joke;
 
 public class Rest {
 

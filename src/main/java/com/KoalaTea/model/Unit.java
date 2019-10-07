@@ -20,8 +20,8 @@ public class Unit {
 
 	public Unit() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
+	
 	public Unit(int id, String unit) {
 		super();
 		this.id = id;
@@ -69,6 +69,4 @@ public class Unit {
 	public String toString() {
 		return "Unit [id=" + id + ", unit=" + unit + "]";
 	}
-
-
 }

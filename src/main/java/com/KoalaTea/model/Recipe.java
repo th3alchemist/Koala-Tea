@@ -17,7 +17,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 @Entity
-@Table(name="Recipe")
+@Table(name="recipe")
 public class Recipe {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -29,24 +29,22 @@ public class Recipe {
 	private String instructions;
 	@Column(name="public")
 	private boolean shared;
-	@Column(name="UserId")
+
+	@Column(name="userid")
 	private int user_id;
 	
-	@OneToMany(mappedBy = "recipe") // inverse side: it has a mappedBy attribute, and can't decide how the association is mapped, since the other side already decided it.
+	@OneToMany(mappedBy = "recipe")
 	@Fetch(FetchMode.JOIN)
-//	@JsonIgnore
 	private List<Ingredient> ingredients;
 	
-	
-	@ManyToOne // owner side: it doesn't have mappedBy, and can decide how the association is mapped: with a join table
-    @JoinTable(name="cook_book_recipe_jt",
+	@ManyToOne
+    @JoinTable(name="cookbookrecipejt",
                joinColumns={@JoinColumn(name="recipeid")},
                inverseJoinColumns={@JoinColumn(name="cookbookid")})
     private CookBook cookBook;
 
 	public Recipe() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Recipe(int id, String title, String instructions, boolean shared, int user_id,
@@ -159,8 +157,4 @@ public class Recipe {
 		return "Recipe [id=" + id + ", title=" + title + ", instructions=" + instructions + ", shared=" + shared
 				+ ", user_id=" + user_id + ", ingredients=" + ingredients + "]";
 	}
-	
-	
-
-
 }
