@@ -68,6 +68,4 @@ public class Unit {
 	public String toString() {
 		return "Unit [id=" + id + ", unit=" + unit + "]";
 	}
-
-
 }

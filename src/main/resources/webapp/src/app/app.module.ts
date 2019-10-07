@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { CookbookComponent } from './components/cookbook/cookbook.component';
 import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
 import { CreateUserAccountComponent } from './components/create-user-account/create-user-account.component';
+import { CreateMealPlanComponent } from './components/create-meal-plan/create-meal-plan.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CreateUserAccountComponent } from './components/create-user-account/cre
     LoginComponent,
     CookbookComponent,
     CreateRecipeComponent,
-    CreateUserAccountComponent
+    CreateUserAccountComponent,
+    CreateMealPlanComponent
   ],
   imports: [
     BrowserModule,

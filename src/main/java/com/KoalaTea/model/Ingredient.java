@@ -17,17 +17,17 @@ public class Ingredient {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
-	@Column(name="ingredientName")
+	@Column(name="ingredientname")
 	private String name;
-	@Column(name="Amount", columnDefinition="numeric")
+	@Column(name="amount", columnDefinition="numeric")
 	private double amount;
 	
 	@ManyToOne
 	@JoinColumn(name="unitid")
 	private Unit unit;
 	
-	@ManyToOne // owner side: it doesn't have mappedBy, and can decide how the association is mapped: with a join table
-    @JoinTable(name="recipe_ingredient_jt",
+	@ManyToOne
+    @JoinTable(name="recipeingredientjt",
                joinColumns={@JoinColumn(name="ingredientid")},
                inverseJoinColumns={@JoinColumn(name="recipeid")})
     private Recipe recipe;
