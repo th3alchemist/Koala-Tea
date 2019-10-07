@@ -2,7 +2,7 @@ package com.KoalaTea.model.restModel;
 
 import java.util.ArrayList;
 
-public class wrapper {
+public class SpoonacularRecipeResponse {
 
 	
 	    ArrayList<SpoonacularRecipe> results;
@@ -11,14 +11,14 @@ public class wrapper {
 	    private int number;
 	    private int totalResults;
 	    private int processingTimeMs;
-	    private int expires;
+	    private long expires;
 	    private boolean isStale;
-		public wrapper() {
+		public SpoonacularRecipeResponse() {
 			super();
 			// TODO Auto-generated constructor stub
 		}
-		public wrapper(ArrayList<SpoonacularRecipe> results, String baseUri, int offset, int number, int totalResults,
-				int processingTimeMs, int expires, boolean isStale) {
+		public SpoonacularRecipeResponse(ArrayList<SpoonacularRecipe> results, String baseUri, int offset, int number, int totalResults,
+				int processingTimeMs, long expires, boolean isStale) {
 			super();
 			this.results = results;
 			this.baseUri = baseUri;
@@ -65,10 +65,10 @@ public class wrapper {
 		public void setProcessingTimeMs(int processingTimeMs) {
 			this.processingTimeMs = processingTimeMs;
 		}
-		public int getExpires() {
+		public long getExpires() {
 			return expires;
 		}
-		public void setExpires(int expires) {
+		public void setExpires(long expires) {
 			this.expires = expires;
 		}
 		public boolean isStale() {
@@ -82,7 +82,7 @@ public class wrapper {
 			final int prime = 31;
 			int result = 1;
 			result = prime * result + ((baseUri == null) ? 0 : baseUri.hashCode());
-			result = prime * result + expires;
+			result = prime * result + (int) (expires ^ (expires >>> 32));
 			result = prime * result + (isStale ? 1231 : 1237);
 			result = prime * result + number;
 			result = prime * result + offset;
@@ -99,7 +99,7 @@ public class wrapper {
 				return false;
 			if (getClass() != obj.getClass())
 				return false;
-			wrapper other = (wrapper) obj;
+			SpoonacularRecipeResponse other = (SpoonacularRecipeResponse) obj;
 			if (baseUri == null) {
 				if (other.baseUri != null)
 					return false;

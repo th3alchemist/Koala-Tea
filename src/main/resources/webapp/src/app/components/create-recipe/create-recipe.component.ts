@@ -14,8 +14,6 @@ export class CreateRecipeComponent implements OnInit {
 
   units: String[] = ["mL", "cup", "teaspoon", "tablespoon"];
 
- 
-
 
   addAnother(){
     let field = document.getElementById('ingredient_block');

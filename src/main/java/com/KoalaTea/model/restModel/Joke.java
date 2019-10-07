@@ -1,4 +1,4 @@
-package com.KoalaTea.model;
+package com.KoalaTea.model.restModel;
 
 public class Joke {
 

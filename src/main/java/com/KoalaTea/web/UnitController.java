@@ -15,14 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.KoalaTea.model.Ingredient;
-import com.KoalaTea.model.Joke;
+import com.KoalaTea.model.restModel.Joke;
 import com.KoalaTea.model.restModel.SpoonacularIngredient;
 import com.KoalaTea.model.restModel.SpoonacularRecipe;
 import com.KoalaTea.model.restModel.SpoonacularError;
 import com.KoalaTea.model.Unit;
 import com.KoalaTea.service.UnitService;
 
+import com.KoalaTea.web.SpoonRest;
 
 @CrossOrigin
 @RestController
@@ -32,7 +32,7 @@ public class UnitController {
 	private UnitService unitService;
 	
 	@Autowired
-	public void setMovieService(UnitService us) {
+	public void setUnitService(UnitService us) {
 		this.unitService = us;
 	}
 	
@@ -64,21 +64,21 @@ public class UnitController {
 	
 	@GetMapping(value="/joke")
 	public Joke getRandomJoke() {
-		return Rest.getRandomFoodJoke();
+		return null;//Rest.getRandomFoodJoke();
 	}
 	
 	@GetMapping(value="/spoonError")
 	public SpoonacularError getSpoon() {
-		return Rest.getSpoon();
+		return SpoonRest.getSpoon();
 	}
 	
 	@GetMapping(value="/spoonIngredient")
 	public SpoonacularIngredient getSpoonIngredient() {
-		return Rest.getSpoonIngredient();
+		return SpoonRest.getSpoonIngredient();
 	}
 	
 	@GetMapping(value="/spoonRecipe")
 	public SpoonacularRecipe getSpoonRecipe() {
-		return Rest.getSpoonRecipe();
+		return SpoonRest.getSpoonRecipe();
 	}
 }

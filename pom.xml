@@ -12,7 +12,7 @@
 	<groupId>com.KoalaTea</groupId>
 	<artifactId>Koala-Tea</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>Koala-Tea</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -47,6 +47,11 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
+		</dependency>
+		
+		<dependency> 
+	        <groupId>junit</groupId>
+	        <artifactId>junit</artifactId>
 		</dependency>
 
 	</dependencies>
