@@ -74,7 +74,7 @@ public class UnitController {
 	
 	@GetMapping(value="/spoonIngredient")
 	public SpoonacularIngredient getSpoonIngredient() {
-		return Rest.getSpoonIngredient(9266);
+		return Rest.getSpoonIngredient();
 	}
 	
 	@GetMapping(value="/spoonRecipe")

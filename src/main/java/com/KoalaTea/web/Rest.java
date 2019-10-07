@@ -19,8 +19,8 @@ public class Rest {
 		return sError;
 	}
 	
-	public static SpoonacularIngredient getSpoonIngredient(int id) {
-		String url = "https://api.spoonacular.com/food/ingredients/" + id +
+	public static SpoonacularIngredient getSpoonIngredient() {
+		String url = "https://api.spoonacular.com/food/ingredients/" + "9266" +
 				     "/information?apiKey=" + System.getenv("SPOON_API_KEY");
 		
 		RestTemplate restTemplate = new RestTemplate();
