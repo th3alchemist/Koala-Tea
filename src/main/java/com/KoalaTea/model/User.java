@@ -1,6 +1,5 @@
 package com.KoalaTea.model;
 
-
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -11,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="user_account")
+@Table(name="useraccount")
 public class User {
 
 	@Id
@@ -30,8 +29,8 @@ public class User {
 	private String address;
 	@Column(name="dateofbirth")
 	private Date dateOfBirth;
-	
-	public User() {
+
+  public User() {
 		super();
 	}
 	public User(int id, String email, String password, String fname, String lname, String address, Date dateOfBirth) {
@@ -147,6 +146,4 @@ public class User {
 		return "User [id=" + id + ", email=" + email + ", password=" + password + ", fname=" + fname + ", lname="
 				+ lname + ", address=" + address + ", dateOfBirth=" + dateOfBirth + "]";
 	}
-
-
 }

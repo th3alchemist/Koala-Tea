@@ -17,7 +17,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 @Entity
-@Table(name="Recipe")
+@Table(name="recipe")
 public class Recipe {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -29,7 +29,7 @@ public class Recipe {
 	private String instructions;
 	@Column(name="public")
 	private boolean shared;
-	@Column(name="UserId")
+	@Column(name="userid")
 	private int user_id;
 	
 	@OneToMany(mappedBy = "recipe")
@@ -38,7 +38,7 @@ public class Recipe {
 	
 	
 	@ManyToOne
-    @JoinTable(name="cook_book_recipe_jt",
+    @JoinTable(name="cookbookrecipejt",
                joinColumns={@JoinColumn(name="recipeid")},
                inverseJoinColumns={@JoinColumn(name="cookbookid")})
     private CookBook cookBook;

@@ -9,11 +9,11 @@
 		<version>2.1.9.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.revature</groupId>
-	<artifactId>SpringBoot</artifactId>
+	<groupId>com.KoalaTea</groupId>
+	<artifactId>Koala-Tea</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>SpringBoot</name>
+	<name>Koala-Tea</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
