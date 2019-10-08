@@ -14,38 +14,40 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.KoalaTea.model.User;
-import com.KoalaTea.service.UserService;
+import com.KoalaTea.model.Ingredient;
+import com.KoalaTea.model.Recipe;
+import com.KoalaTea.service.IngredientService;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value="/user")
-public class UserController {
-
+@RequestMapping(value="/ingredient")
+public class IngredientController {
 	@Autowired
-	private UserService userService;
-	
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
+	private IngredientService ingredientService;
 	
 	@GetMapping(value="/all", produces=MediaType.APPLICATION_JSON_VALUE)
-	public List<User> getAllUsers(){
-		return userService.findAll();
+	@ResponseBody
+	public List<Ingredient> getAllIngredient(){
+		return ingredientService.findAll();
 	}
 	
 	@PostMapping(value="/insert")
-	public void insertUser(@RequestBody User u) {
-		userService.insertUser(u);
+	public void insertIngredient(@RequestBody List<Ingredient> i) {
+		ingredientService.insertIngredient(i);
 	}
 	
 	@GetMapping(value="/{id}")
-	public User getUserById(@PathVariable int id) {
-		return userService.findById(id);
+	public Ingredient getIngredientById(@PathVariable int id) {
+		return ingredientService.findById(id);  
 	}
 
 	@GetMapping(value="/byId")
-	public User getUserByIdAgain(@RequestParam int id) {
-		return userService.findById(id);
+	public Ingredient getIngredientByIdAgain(@RequestParam int id) {
+		return ingredientService.findById(id);
+	}
+	
+	@PostMapping(value="/byRecipe")
+	public List<Ingredient> getIngredientsByRecipe(@RequestBody Recipe recipe) {
+		return ingredientService.findByrecipe(recipe);
 	}
 }

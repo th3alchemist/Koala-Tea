@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -32,92 +31,133 @@ public class Recipe {
 	@Column(name="userid")
 	private int user_id;
 	
-	@OneToMany(mappedBy = "recipe")
-	@Fetch(FetchMode.JOIN)
-	private List<Ingredient> ingredients;
+//	@Column(name="cookbookid")
+//	private int cookbook_id;
 	
+//	@OneToMany(mappedBy = "recipe")
+//	private List<Ingredient> ingredients;
 	
 	@ManyToOne
-    @JoinTable(name="cookbookrecipejt",
-               joinColumns={@JoinColumn(name="recipeid")},
-               inverseJoinColumns={@JoinColumn(name="cookbookid")})
-    private CookBook cookBook;
+	@JoinColumn(name="cookbookid", nullable=true)
+	private CookBook cookBook;
 
 	public Recipe() {
 		super();
 	}
 
-	public Recipe(int id, String title, String instructions, boolean shared, int user_id,
-			List<Ingredient> ingredients) {
+	public Recipe(int id, String title, String instructions, boolean shared, int user_id, 
+			CookBook cookBook) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.instructions = instructions;
 		this.shared = shared;
 		this.user_id = user_id;
-		this.ingredients = ingredients;
+//		this.ingredients = ingredients;
+		this.cookBook = cookBook;
 	}
+
+
 
 	public int getId() {
 		return id;
 	}
 
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
+
 
 	public String getTitle() {
 		return title;
 	}
 
+
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+
 
 	public String getInstructions() {
 		return instructions;
 	}
 
+
+
 	public void setInstructions(String instructions) {
 		this.instructions = instructions;
 	}
+
+
 
 	public boolean isShared() {
 		return shared;
 	}
 
+
+
 	public void setShared(boolean shared) {
 		this.shared = shared;
 	}
+
+
 
 	public int getUser_id() {
 		return user_id;
 	}
 
+
+
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
 
-	public List<Ingredient> getIngredients() {
-		return ingredients;
+
+
+//	public List<Ingredient> getIngredients() {
+//		return ingredients;
+//	}
+//
+//
+//
+//	public void setIngredients(List<Ingredient> ingredients) {
+//		this.ingredients = ingredients;
+//	}
+
+
+
+	public CookBook getCookBook() {
+		return cookBook;
 	}
 
-	public void setIngredients(List<Ingredient> ingredients) {
-		this.ingredients = ingredients;
+
+
+	public void setCookBook(CookBook cookBook) {
+		this.cookBook = cookBook;
 	}
+
+
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((cookBook == null) ? 0 : cookBook.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((ingredients == null) ? 0 : ingredients.hashCode());
+//		result = prime * result + ((ingredients == null) ? 0 : ingredients.hashCode());
 		result = prime * result + ((instructions == null) ? 0 : instructions.hashCode());
 		result = prime * result + (shared ? 1231 : 1237);
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + user_id;
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -128,13 +168,18 @@ public class Recipe {
 		if (getClass() != obj.getClass())
 			return false;
 		Recipe other = (Recipe) obj;
+		if (cookBook == null) {
+			if (other.cookBook != null)
+				return false;
+		} else if (!cookBook.equals(other.cookBook))
+			return false;
 		if (id != other.id)
 			return false;
-		if (ingredients == null) {
-			if (other.ingredients != null)
-				return false;
-		} else if (!ingredients.equals(other.ingredients))
-			return false;
+//		if (ingredients == null) {
+//			if (other.ingredients != null)
+//				return false;
+//		} else if (!ingredients.equals(other.ingredients))
+//			return false;
 		if (instructions == null) {
 			if (other.instructions != null)
 				return false;
@@ -152,9 +197,13 @@ public class Recipe {
 		return true;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Recipe [id=" + id + ", title=" + title + ", instructions=" + instructions + ", shared=" + shared
-				+ ", user_id=" + user_id + ", ingredients=" + ingredients + "]";
+				+ ", user_id=" + user_id + ", cookBook=" + cookBook + "]";
 	}
+
+	
 }

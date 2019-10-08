@@ -30,22 +30,21 @@ public class CookBook {
 	@Column(name="userid")
 	private int userid;
 
-	@OneToMany(mappedBy = "cookBook") // inverse side: it has a mappedBy attribute, and can't decide how the association is mapped, since the other side already decided it.
-	@Fetch(FetchMode.JOIN)
-	private List<Recipe> recipes;
+//	@OneToMany(mappedBy="cookbookid")
+//	private List<Recipe> recipes;
 
 	public CookBook() {
 		super();
 	}
 
-	public CookBook(int id, String title, String description, boolean shared, int user_id, List<Recipe> recipes) {
+	public CookBook(int id, String title, String description, boolean shared, int user_id) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.shared = shared;
 		this.userid = user_id;
-		this.recipes = recipes;
+//		this.recipes = recipes;
 	}
 
 	public int getId() {
@@ -88,13 +87,13 @@ public class CookBook {
 		this.userid = user_id;
 	}
 
-	public List<Recipe> getRecipes() {
-		return recipes;
-	}
-
-	public void setRecipes(List<Recipe> recipes) {
-		this.recipes = recipes;
-	}
+//	public List<Recipe> getRecipes() {
+//		return recipes;
+//	}
+//
+//	public void setRecipes(List<Recipe> recipes) {
+//		this.recipes = recipes;
+//	}
 
 	@Override
 	public int hashCode() {
@@ -102,7 +101,7 @@ public class CookBook {
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((recipes == null) ? 0 : recipes.hashCode());
+//		result = prime * result + ((recipes == null) ? 0 : recipes.hashCode());
 		result = prime * result + (shared ? 1231 : 1237);
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + userid;
@@ -125,11 +124,11 @@ public class CookBook {
 			return false;
 		if (id != other.id)
 			return false;
-		if (recipes == null) {
-			if (other.recipes != null)
-				return false;
-		} else if (!recipes.equals(other.recipes))
-			return false;
+//		if (recipes == null) {
+//			if (other.recipes != null)
+//				return false;
+//		} else if (!recipes.equals(other.recipes))
+//			return false;
 		if (shared != other.shared)
 			return false;
 		if (title == null) {
@@ -145,6 +144,6 @@ public class CookBook {
 	@Override
 	public String toString() {
 		return "CookBook [id=" + id + ", title=" + title + ", description=" + description + ", shared=" + shared
-				+ ", user_id=" + userid + ", recipes=" + recipes + "]";
+				+ ", user_id=" + userid + "]";
 	}
 }

@@ -13,8 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name="mealplan")
@@ -32,8 +30,7 @@ public class MealPlan {
 	@JoinColumn(name="userid")
 	private User user;
 	
-	@OneToMany(mappedBy = "mealPlan")
-	@Fetch(FetchMode.JOIN)
+	@OneToMany(mappedBy="mealPlan")
 	private List<Meal> meals;
 
 	public MealPlan(int id, Date day, User user, List<Meal> meals) {

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.KoalaTea.model.CookBook;
 import com.KoalaTea.model.Recipe;
 import com.KoalaTea.service.RecipeService;
 
@@ -23,7 +24,6 @@ import com.KoalaTea.service.RecipeService;
 public class RecipeController {
 	@Autowired
 	private RecipeService recipeService;
-	
 	
 	@GetMapping(value="/all", produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -44,6 +44,11 @@ public class RecipeController {
 	@GetMapping(value="/byId")
 	public Recipe getRecipeByIdAgain(@RequestParam int id) {
 		return recipeService.findById(id);
+	}
+	
+	@PostMapping(value="/byCookbook")
+	public List<Recipe> getRecipeByCookbookIdAgain(@RequestBody CookBook cookbook) {
+		return recipeService.findBycookBook(cookbook);
 	}
 	
 }
