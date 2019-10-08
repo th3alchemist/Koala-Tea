@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -23,59 +22,79 @@ public class Ingredient {
 	private double amount;
 	
 	@ManyToOne
+	@JoinColumn(name="recipeid")
+	private Recipe recipe;
+	
+	@ManyToOne
 	@JoinColumn(name="unitid")
 	private Unit unit;
 	
-	@ManyToOne
-    @JoinTable(name="recipeingredientjt",
-               joinColumns={@JoinColumn(name="ingredientid")},
-               inverseJoinColumns={@JoinColumn(name="recipeid")})
-    private Recipe recipe;
 	
 	public Ingredient() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Ingredient(int id, String name, double amount, Unit unit) {
+
+	public Ingredient(int id, String name, double amount, Recipe recipe, Unit unit) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.amount = amount;
+		this.recipe = recipe;
 		this.unit = unit;
 	}
+
 
 	public int getId() {
 		return id;
 	}
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 
 	public String getName() {
 		return name;
 	}
 
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 
 	public double getAmount() {
 		return amount;
 	}
 
+
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
+
+
+	public Recipe getRecipe() {
+		return recipe;
+	}
+
+
+	public void setRecipe(Recipe recipe) {
+		this.recipe = recipe;
+	}
+
 
 	public Unit getUnit() {
 		return unit;
 	}
 
+
 	public void setUnit(Unit unit) {
 		this.unit = unit;
 	}
+
 
 	@Override
 	public int hashCode() {
@@ -86,9 +105,11 @@ public class Ingredient {
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((recipe == null) ? 0 : recipe.hashCode());
 		result = prime * result + ((unit == null) ? 0 : unit.hashCode());
 		return result;
 	}
+
 
 	@Override
 	public boolean equals(Object obj) {
@@ -108,6 +129,11 @@ public class Ingredient {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
+		if (recipe == null) {
+			if (other.recipe != null)
+				return false;
+		} else if (!recipe.equals(other.recipe))
+			return false;
 		if (unit == null) {
 			if (other.unit != null)
 				return false;
@@ -116,8 +142,12 @@ public class Ingredient {
 		return true;
 	}
 
+
 	@Override
 	public String toString() {
-		return "Ingredient [id=" + id + ", name=" + name + ", amount=" + amount + ", unit=" + unit + "]";
+		return "Ingredient [id=" + id + ", name=" + name + ", amount=" + amount + ", recipe=" + recipe + ", unit="
+				+ unit + "]";
 	}
+
+	
 }
