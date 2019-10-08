@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -27,12 +25,8 @@ public class Meal {
 	@Column(name="time")
 	private Time time;
 	
-	@ManyToOne
-	@JoinTable(name="mealplanmealjt",
-               joinColumns={@JoinColumn(name="mealid")},
-               inverseJoinColumns={@JoinColumn(name="mealplanid")})
-    private MealPlan mealPlan;
-	
+	@JoinColumn(name="mealplanid")
+	private MealPlan mealPlan;
 
 	public Meal() {
 		super();
@@ -47,56 +41,45 @@ public class Meal {
 		this.mealPlan = mealPlan;
 	}
 
-
 	public int getId() {
 		return id;
 	}
-
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
 	public String getTitle() {
 		return title;
 	}
-
 
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
-
 	public String getCourse() {
 		return course;
 	}
-
 
 	public void setCourse(String course) {
 		this.course = course;
 	}
 
-
 	public Time getTime() {
 		return time;
 	}
-
 
 	public void setTime(Time time) {
 		this.time = time;
 	}
 
-
 	public MealPlan getMealPlan() {
 		return mealPlan;
 	}
 
-
 	public void setMealPlan(MealPlan mealPlan) {
 		this.mealPlan = mealPlan;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -109,7 +92,6 @@ public class Meal {
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -145,10 +127,12 @@ public class Meal {
 		return true;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Meal [id=" + id + ", title=" + title + ", course=" + course + ", time=" + time + ", mealPlan="
 				+ mealPlan + "]";
-	}	
+	}
+
+	
+	
 }

@@ -31,14 +31,17 @@ public class UserController {
 	
 	@GetMapping(value="/all", produces=MediaType.APPLICATION_JSON_VALUE)
 	public List<User> getAllUsers(){
-		System.out.println("here");
-	
 		return userService.findAll();
 	}
 	
 	@PostMapping(value="/insert")
 	public void insertUser(@RequestBody User u) {
 		userService.insertUser(u);
+	}
+	
+	@PostMapping(value="/delete")
+	public void deleteUser(@RequestBody User u) {
+		userService.deleteUser(u);
 	}
 	
 	@GetMapping(value="/{id}")

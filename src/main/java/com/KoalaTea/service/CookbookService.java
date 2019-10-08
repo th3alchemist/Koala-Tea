@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.KoalaTea.model.CookBook;
+import com.KoalaTea.model.User;
 import com.KoalaTea.repository.CookbookRepository;
 
 @Service(value="cookbookService")
@@ -22,11 +23,15 @@ public class CookbookService {
 		return cookbookRepository.findById(id);
 	}
 	
-	public CookBook findByUserId(int id) {
-		return cookbookRepository.findByUserid(id);
+	public CookBook findByUser(User user) {
+		return cookbookRepository.findByUser(user);
 	}
 	
 	public void insertCookbook(CookBook c) {
 		cookbookRepository.save(c);
+	}
+	
+	public void deleteCookbook(CookBook c) {
+		cookbookRepository.delete(c);
 	}
 }

@@ -8,13 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name="recipe")
@@ -29,33 +24,27 @@ public class Recipe {
 	private String instructions;
 	@Column(name="public")
 	private boolean shared;
-
-	@Column(name="userid")
-	private int user_id;
-	
-	@OneToMany(mappedBy = "recipe")
-	@Fetch(FetchMode.JOIN)
-	private List<Ingredient> ingredients;
 	
 	@ManyToOne
-    @JoinTable(name="cookbookrecipejt",
-               joinColumns={@JoinColumn(name="recipeid")},
-               inverseJoinColumns={@JoinColumn(name="cookbookid")})
-    private CookBook cookBook;
+	@JoinColumn(name="userid")
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name="cookbookid", nullable=true)
+	private CookBook cookBook;
 
 	public Recipe() {
 		super();
 	}
 
-	public Recipe(int id, String title, String instructions, boolean shared, int user_id,
-			List<Ingredient> ingredients) {
+	public Recipe(int id, String title, String instructions, boolean shared, User user, CookBook cookBook) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.instructions = instructions;
 		this.shared = shared;
-		this.user_id = user_id;
-		this.ingredients = ingredients;
+		this.user = user;
+		this.cookBook = cookBook;
 	}
 
 	public int getId() {
@@ -90,32 +79,32 @@ public class Recipe {
 		this.shared = shared;
 	}
 
-	public int getUser_id() {
-		return user_id;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public List<Ingredient> getIngredients() {
-		return ingredients;
+	public CookBook getCookBook() {
+		return cookBook;
 	}
 
-	public void setIngredients(List<Ingredient> ingredients) {
-		this.ingredients = ingredients;
+	public void setCookBook(CookBook cookBook) {
+		this.cookBook = cookBook;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((cookBook == null) ? 0 : cookBook.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((ingredients == null) ? 0 : ingredients.hashCode());
 		result = prime * result + ((instructions == null) ? 0 : instructions.hashCode());
 		result = prime * result + (shared ? 1231 : 1237);
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
-		result = prime * result + user_id;
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -128,12 +117,12 @@ public class Recipe {
 		if (getClass() != obj.getClass())
 			return false;
 		Recipe other = (Recipe) obj;
-		if (id != other.id)
-			return false;
-		if (ingredients == null) {
-			if (other.ingredients != null)
+		if (cookBook == null) {
+			if (other.cookBook != null)
 				return false;
-		} else if (!ingredients.equals(other.ingredients))
+		} else if (!cookBook.equals(other.cookBook))
+			return false;
+		if (id != other.id)
 			return false;
 		if (instructions == null) {
 			if (other.instructions != null)
@@ -147,7 +136,10 @@ public class Recipe {
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
-		if (user_id != other.user_id)
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}
@@ -155,6 +147,7 @@ public class Recipe {
 	@Override
 	public String toString() {
 		return "Recipe [id=" + id + ", title=" + title + ", instructions=" + instructions + ", shared=" + shared
-				+ ", user_id=" + user_id + ", ingredients=" + ingredients + "]";
+				+ ", user=" + user + ", cookBook=" + cookBook + "]";
 	}
+	
 }

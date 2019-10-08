@@ -14,46 +14,50 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.KoalaTea.model.CookBook;
+import com.KoalaTea.model.Ingredient;
 import com.KoalaTea.model.Recipe;
-import com.KoalaTea.service.RecipeService;
+import com.KoalaTea.service.IngredientService;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value="/recipe")
-public class RecipeController {
+@RequestMapping(value="/ingredient")
+public class IngredientController {
 	@Autowired
-	private RecipeService recipeService;
+	private IngredientService ingredientService;
 	
 	@GetMapping(value="/all", produces=MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public List<Recipe> getAllRecipe(){
-		return recipeService.findAll();
+	public List<Ingredient> getAllIngredient(){
+		return ingredientService.findAll();
 	}
 	
 	@PostMapping(value="/insert")
-	public void insertRecipe(@RequestBody Recipe r) {
-		recipeService.insertRecipe(r);
+	public void insertIngredient(@RequestBody List<Ingredient> i) {
+		ingredientService.insertIngredient(i);
+	}
+	
+	@PostMapping(value="/update")
+	public void updateIngredient(@RequestBody Ingredient i) {
+		ingredientService.updateIngredient(i);
 	}
 	
 	@GetMapping(value="/{id}")
-	public Recipe getRecipeById(@PathVariable int id) {
-		return recipeService.findById(id);
+	public Ingredient getIngredientById(@PathVariable int id) {
+		return ingredientService.findById(id);  
 	}
 
 	@GetMapping(value="/byId")
-	public Recipe getRecipeByIdAgain(@RequestParam int id) {
-		return recipeService.findById(id);
+	public Ingredient getIngredientByIdAgain(@RequestParam int id) {
+		return ingredientService.findById(id);
 	}
 	
-	@PostMapping(value="/byCookbook")
-	public List<Recipe> getRecipeByCookBook(@RequestBody CookBook cookbook) {
-		return recipeService.findByCookBook(cookbook);
+	@PostMapping(value="/byRecipe")
+	public List<Ingredient> getIngredientsByRecipe(@RequestBody Recipe recipe) {
+		return ingredientService.findByrecipe(recipe);
 	}
 	
 	@PostMapping(value="/delete")
-	public void deleteRecipe(@RequestBody Recipe r) {
-		recipeService.deleteRecipe(r);
+	public void deleteIngredient(@RequestBody Ingredient i) {
+		ingredientService.deleteIngredient(i);
 	}
-	
 }
