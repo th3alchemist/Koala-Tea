@@ -36,6 +36,11 @@ public class IngredientController {
 		ingredientService.insertIngredient(i);
 	}
 	
+	@PostMapping(value="/update")
+	public void updateIngredient(@RequestBody Ingredient i) {
+		ingredientService.updateIngredient(i);
+	}
+	
 	@GetMapping(value="/{id}")
 	public Ingredient getIngredientById(@PathVariable int id) {
 		return ingredientService.findById(id);  
