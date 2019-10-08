@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.KoalaTea.model.CookBook;
+import com.KoalaTea.model.User;
 import com.KoalaTea.service.CookbookService;
 
 @CrossOrigin
@@ -43,9 +44,14 @@ public class CookbookController {
 		return cookbookService.findById(id);
 	}
 	
-	@GetMapping(value="/byUserId")
-	public CookBook getCookbookByUserId(@RequestParam int id) {
-		return cookbookService.findByUserId(id);
+	@PostMapping(value="/byUser")
+	public CookBook getCookbookByUser(@RequestBody User user) {
+		return cookbookService.findByUser(user);
+	}
+	
+	@PostMapping(value="/delete")
+	public void deleteCookbook(@RequestBody CookBook c) {
+		cookbookService.deleteCookbook(c);
 	}
 	
 }

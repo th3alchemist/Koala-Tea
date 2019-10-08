@@ -31,4 +31,7 @@ public class IngredientService {
 	public void insertIngredient(List<Ingredient> i) {
 		ingredientRepository.saveAll(i);
 	}
+	public void deleteIngredient(Ingredient i) {
+		ingredientRepository.delete(i);
+	}
 }

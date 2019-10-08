@@ -13,6 +13,7 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
 
 	public List<Recipe> findAll();
 	public Recipe findById(int id);
-	public List<Recipe> findBycookBook(CookBook cookBook);
+	public List<Recipe> findByCookBook(CookBook cookBook);
 	public <S extends Recipe> S save(Recipe r);
+	public void delete(Recipe r);
 }

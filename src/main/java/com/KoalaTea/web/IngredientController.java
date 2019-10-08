@@ -50,4 +50,9 @@ public class IngredientController {
 	public List<Ingredient> getIngredientsByRecipe(@RequestBody Recipe recipe) {
 		return ingredientService.findByrecipe(recipe);
 	}
+	
+	@PostMapping(value="/delete")
+	public void deleteIngredient(@RequestBody Ingredient i) {
+		ingredientService.deleteIngredient(i);
+	}
 }

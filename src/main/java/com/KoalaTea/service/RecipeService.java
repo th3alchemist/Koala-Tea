@@ -22,11 +22,15 @@ public class RecipeService {
 	public Recipe findById(int id) {
 		return recipeRepository.findById(id);
 	}
-	public List<Recipe> findBycookBook(CookBook cookBook) {
-		return recipeRepository.findBycookBook(cookBook);
+	public List<Recipe> findByCookBook(CookBook cookBook) {
+		return recipeRepository.findByCookBook(cookBook);
 	}
 	
 	public void insertRecipe(Recipe r) {
 		recipeRepository.save(r);
+	}
+	
+	public void deleteRecipe(Recipe r) {
+		recipeRepository.delete(r);
 	}
 }

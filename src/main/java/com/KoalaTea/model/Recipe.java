@@ -28,14 +28,10 @@ public class Recipe {
 	private String instructions;
 	@Column(name="public")
 	private boolean shared;
-	@Column(name="userid")
-	private int user_id;
 	
-//	@Column(name="cookbookid")
-//	private int cookbook_id;
-	
-//	@OneToMany(mappedBy = "recipe")
-//	private List<Ingredient> ingredients;
+	@ManyToOne
+	@JoinColumn(name="userid")
+	private User user;
 	
 	@ManyToOne
 	@JoinColumn(name="cookbookid", nullable=true)
@@ -45,103 +41,63 @@ public class Recipe {
 		super();
 	}
 
-	public Recipe(int id, String title, String instructions, boolean shared, int user_id, 
-			CookBook cookBook) {
+	public Recipe(int id, String title, String instructions, boolean shared, User user, CookBook cookBook) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.instructions = instructions;
 		this.shared = shared;
-		this.user_id = user_id;
-//		this.ingredients = ingredients;
+		this.user = user;
 		this.cookBook = cookBook;
 	}
-
-
 
 	public int getId() {
 		return id;
 	}
 
-
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
 
 	public String getTitle() {
 		return title;
 	}
 
-
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-
 
 	public String getInstructions() {
 		return instructions;
 	}
 
-
-
 	public void setInstructions(String instructions) {
 		this.instructions = instructions;
 	}
-
-
 
 	public boolean isShared() {
 		return shared;
 	}
 
-
-
 	public void setShared(boolean shared) {
 		this.shared = shared;
 	}
 
-
-
-	public int getUser_id() {
-		return user_id;
+	public User getUser() {
+		return user;
 	}
 
-
-
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUser(User user) {
+		this.user = user;
 	}
-
-
-
-//	public List<Ingredient> getIngredients() {
-//		return ingredients;
-//	}
-//
-//
-//
-//	public void setIngredients(List<Ingredient> ingredients) {
-//		this.ingredients = ingredients;
-//	}
-
-
 
 	public CookBook getCookBook() {
 		return cookBook;
 	}
 
-
-
 	public void setCookBook(CookBook cookBook) {
 		this.cookBook = cookBook;
 	}
-
-
 
 	@Override
 	public int hashCode() {
@@ -149,15 +105,12 @@ public class Recipe {
 		int result = 1;
 		result = prime * result + ((cookBook == null) ? 0 : cookBook.hashCode());
 		result = prime * result + id;
-//		result = prime * result + ((ingredients == null) ? 0 : ingredients.hashCode());
 		result = prime * result + ((instructions == null) ? 0 : instructions.hashCode());
 		result = prime * result + (shared ? 1231 : 1237);
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
-		result = prime * result + user_id;
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -175,11 +128,6 @@ public class Recipe {
 			return false;
 		if (id != other.id)
 			return false;
-//		if (ingredients == null) {
-//			if (other.ingredients != null)
-//				return false;
-//		} else if (!ingredients.equals(other.ingredients))
-//			return false;
 		if (instructions == null) {
 			if (other.instructions != null)
 				return false;
@@ -192,18 +140,21 @@ public class Recipe {
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
-		if (user_id != other.user_id)
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Recipe [id=" + id + ", title=" + title + ", instructions=" + instructions + ", shared=" + shared
-				+ ", user_id=" + user_id + ", cookBook=" + cookBook + "]";
+				+ ", user=" + user + ", cookBook=" + cookBook + "]";
 	}
+
+	
 
 	
 }

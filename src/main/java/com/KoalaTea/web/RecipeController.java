@@ -47,8 +47,13 @@ public class RecipeController {
 	}
 	
 	@PostMapping(value="/byCookbook")
-	public List<Recipe> getRecipeByCookbookIdAgain(@RequestBody CookBook cookbook) {
-		return recipeService.findBycookBook(cookbook);
+	public List<Recipe> getRecipeByCookBook(@RequestBody CookBook cookbook) {
+		return recipeService.findByCookBook(cookbook);
+	}
+	
+	@PostMapping(value="/delete")
+	public void deleteRecipe(@RequestBody Recipe r) {
+		recipeService.deleteRecipe(r);
 	}
 	
 }

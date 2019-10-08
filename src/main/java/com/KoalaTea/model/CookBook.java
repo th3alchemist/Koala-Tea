@@ -1,17 +1,13 @@
 package com.KoalaTea.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name="cookbook")
@@ -27,24 +23,22 @@ public class CookBook {
 	private String description;
 	@Column(name="public")
 	private boolean shared;
-	@Column(name="userid")
-	private int userid;
-
-//	@OneToMany(mappedBy="cookbookid")
-//	private List<Recipe> recipes;
-
+	
+	@ManyToOne
+	@JoinColumn(name="userid")
+	private User user;
+	
 	public CookBook() {
 		super();
 	}
 
-	public CookBook(int id, String title, String description, boolean shared, int user_id) {
+	public CookBook(int id, String title, String description, boolean shared, User user) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.shared = shared;
-		this.userid = user_id;
-//		this.recipes = recipes;
+		this.user = user;
 	}
 
 	public int getId() {
@@ -79,21 +73,13 @@ public class CookBook {
 		this.shared = shared;
 	}
 
-	public int getUser_id() {
-		return this.userid;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUser_id(int user_id) {
-		this.userid = user_id;
+	public void setUser(User user) {
+		this.user = user;
 	}
-
-//	public List<Recipe> getRecipes() {
-//		return recipes;
-//	}
-//
-//	public void setRecipes(List<Recipe> recipes) {
-//		this.recipes = recipes;
-//	}
 
 	@Override
 	public int hashCode() {
@@ -101,10 +87,9 @@ public class CookBook {
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + id;
-//		result = prime * result + ((recipes == null) ? 0 : recipes.hashCode());
 		result = prime * result + (shared ? 1231 : 1237);
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
-		result = prime * result + userid;
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -124,11 +109,6 @@ public class CookBook {
 			return false;
 		if (id != other.id)
 			return false;
-//		if (recipes == null) {
-//			if (other.recipes != null)
-//				return false;
-//		} else if (!recipes.equals(other.recipes))
-//			return false;
 		if (shared != other.shared)
 			return false;
 		if (title == null) {
@@ -136,7 +116,10 @@ public class CookBook {
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
-		if (userid != other.userid)
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}
@@ -144,6 +127,8 @@ public class CookBook {
 	@Override
 	public String toString() {
 		return "CookBook [id=" + id + ", title=" + title + ", description=" + description + ", shared=" + shared
-				+ ", user_id=" + userid + "]";
+				+ ", user=" + user + "]";
 	}
+
+	
 }

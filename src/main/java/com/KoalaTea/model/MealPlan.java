@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -29,21 +28,17 @@ public class MealPlan {
 	@ManyToOne
 	@JoinColumn(name="userid")
 	private User user;
-	
-	@OneToMany(mappedBy="mealPlan")
-	private List<Meal> meals;
-
-	public MealPlan(int id, Date day, User user, List<Meal> meals) {
-		super();
-		this.id = id;
-		this.day = day;
-		this.user = user;
-		this.meals = meals;
-	}
 
 	public MealPlan() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public MealPlan(int id, Date day, User user) {
+		super();
+		this.id = id;
+		this.day = day;
+		this.user = user;
 	}
 
 	public int getId() {
@@ -70,21 +65,12 @@ public class MealPlan {
 		this.user = user;
 	}
 
-	public List<Meal> getMeals() {
-		return meals;
-	}
-
-	public void setMeals(List<Meal> meals) {
-		this.meals = meals;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((day == null) ? 0 : day.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((meals == null) ? 0 : meals.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
@@ -105,11 +91,6 @@ public class MealPlan {
 			return false;
 		if (id != other.id)
 			return false;
-		if (meals == null) {
-			if (other.meals != null)
-				return false;
-		} else if (!meals.equals(other.meals))
-			return false;
 		if (user == null) {
 			if (other.user != null)
 				return false;
@@ -120,6 +101,8 @@ public class MealPlan {
 
 	@Override
 	public String toString() {
-		return "MealPlan [id=" + id + ", day=" + day + ", user=" + user + ", meals=" + meals + "]";
+		return "MealPlan [id=" + id + ", day=" + day + ", user=" + user + "]";
 	}
+	
+	
 }
