@@ -10,48 +10,46 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.KoalaTea.model.CookBook;
+import com.KoalaTea.model.MealPlan;
 import com.KoalaTea.model.User;
-import com.KoalaTea.service.CookbookService;
+import com.KoalaTea.service.MealPlanService;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value="/cookbook")
-public class CookbookController {
-	
+@RequestMapping(value="/mealplan")
+public class MealPlanController {
+
 	@Autowired
-	private CookbookService cookbookService;
+	private MealPlanService mealplanService;
 	
-	public void setUserService(CookbookService cookbookService) {
-		this.cookbookService = cookbookService;
+	public void setMealPlanService(MealPlanService mealplanService) {
+		this.mealplanService = mealplanService;
 	}
 	
 	@GetMapping(value="/all", produces=MediaType.APPLICATION_JSON_VALUE)
-	public List<CookBook> getAllCookbook(){
-		return cookbookService.findAll();
+	public List<MealPlan> getAllMealPlan(){
+		return mealplanService.findAll();
 	}
 	
 	@PostMapping(value="/insert")
-	public void insertCookbook(@RequestBody CookBook c) {
-		cookbookService.insertCookbook(c);
+	public void insertMealPlan(@RequestBody MealPlan mp) {
+		mealplanService.insertMealPlan(mp);
 	}
 	
 	@GetMapping(value="/{id}")
-	public CookBook getCookbookById(@PathVariable int id) {
-		return cookbookService.findById(id);
+	public MealPlan getMealPlanById(@PathVariable int id) {
+		return mealplanService.findById(id);
 	}
 	
 	@PostMapping(value="/byUser")
-	public CookBook getCookbookByUser(@RequestBody User user) {
-		return cookbookService.findByUser(user);
+	public MealPlan getMealPlanByUser(@RequestBody User user) {
+		return mealplanService.findByUser(user);
 	}
 	
 	@PostMapping(value="/delete")
-	public void deleteCookbook(@RequestBody CookBook c) {
-		cookbookService.deleteCookbook(c);
+	public void deleteMealPlan(@RequestBody MealPlan mp) {
+		mealplanService.deleteMealPlan(mp);
 	}
-	
 }
