@@ -28,4 +28,8 @@ public class UserService {
 	public void deleteUser(User u) {
 		userRepository.delete(u);
 	}
+	
+	public User validateLogin(String email, String password) {
+		return userRepository.findByEmailAndPassword(email, password);
+	}
 }

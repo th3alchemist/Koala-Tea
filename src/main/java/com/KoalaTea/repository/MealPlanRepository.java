@@ -15,5 +15,5 @@ public interface MealPlanRepository extends JpaRepository<MealPlan, Integer> {
 	public MealPlan findById(int id);
 	public MealPlan findByUser(User user);
 	public <S extends MealPlan> S save(MealPlan mp);
-	public void delete(MealPlan mp);	
+	public void delete(MealPlan mp);
 }

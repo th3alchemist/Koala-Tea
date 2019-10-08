@@ -14,4 +14,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	public User findById(int id);
 	public <S extends User> S save(S u);
 	public void delete(User u);
+	public User findByEmailAndPassword(String email, String password);
 }

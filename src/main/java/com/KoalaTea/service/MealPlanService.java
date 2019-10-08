@@ -34,4 +34,5 @@ public class MealPlanService {
 	public void deleteMealPlan(MealPlan c) {
 		mealplanRepository.delete(c);
 	}
+	
 }
