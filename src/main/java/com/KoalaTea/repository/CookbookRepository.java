@@ -14,5 +14,5 @@ public interface CookbookRepository extends JpaRepository<CookBook, Integer>  {
 	public List<CookBook> findAll();
 	public CookBook findById(int id);
 	public CookBook findByUserid(int id);
-	public <S extends CookBook> S save(CookBook c);
+	public <S extends CookBook> S save(S c);
 }

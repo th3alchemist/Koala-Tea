@@ -13,5 +13,5 @@ public interface UnitRepository extends JpaRepository<Unit, Integer>{
 	
 	public List<Unit> findAll();
 	public Unit findById(int id);
-	public <S extends Unit> S save(Unit u);
+	public <S extends Unit> S save(S u);
 }
