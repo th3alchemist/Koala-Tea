@@ -61,24 +61,4 @@ public class UnitController {
 	public Unit getMovieByIdAgain(@RequestParam int id) {
 		return unitService.getUnitById(id);
 	}
-	
-	@GetMapping(value="/joke")
-	public Joke getRandomJoke() {
-		return null;//Rest.getRandomFoodJoke();
-	}
-	
-	@GetMapping(value="/spoonError")
-	public SpoonacularError getSpoon() {
-		return SpoonRest.getSpoon();
-	}
-	
-	@GetMapping(value="/spoonIngredient")
-	public SpoonacularIngredient getSpoonIngredient() {
-		return SpoonRest.getSpoonIngredient();
-	}
-	
-	@GetMapping(value="/spoonRecipe")
-	public SpoonacularRecipe getSpoonRecipe() {
-		return SpoonRest.getSpoonRecipe();
-	}
 }
