@@ -53,4 +53,14 @@ public class UserController {
 	public User getUserByIdAgain(@RequestParam int id) {
 		return userService.findById(id);
 	}
+	
+	@PostMapping(value="/login")
+	public User validateLogin(@RequestParam String email, String password) {
+		return userService.validateLogin(email, password);
+	}
+	
+	@PostMapping(value="/login2")
+	public User validateLogin2(@RequestBody User u) {
+		return userService.validateLogin(u.getEmail(), u.getPassword());
+	}
 }

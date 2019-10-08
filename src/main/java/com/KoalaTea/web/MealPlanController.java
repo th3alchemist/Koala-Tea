@@ -52,4 +52,5 @@ public class MealPlanController {
 	public void deleteMealPlan(@RequestBody MealPlan mp) {
 		mealplanService.deleteMealPlan(mp);
 	}
+	
 }
