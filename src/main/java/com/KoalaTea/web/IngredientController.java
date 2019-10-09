@@ -32,8 +32,8 @@ public class IngredientController {
 	}
 	
 	@PostMapping(value="/insert")
-	public void insertIngredient(@RequestBody List<Ingredient> i) {
-		ingredientService.insertIngredient(i);
+	public List<Ingredient> insertIngredient(@RequestBody List<Ingredient> i) {
+		return ingredientService.insertIngredient(i);
 	}
 	
 	@PostMapping(value="/update")

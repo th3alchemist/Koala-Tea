@@ -28,8 +28,8 @@ public class IngredientService {
 	public List<Ingredient> findByrecipe(Recipe recipe){
 		return ingredientRepository.findByrecipe(recipe);
 	}
-	public void insertIngredient(List<Ingredient> i) {
-		ingredientRepository.saveAll(i);
+	public List<Ingredient> insertIngredient(List<Ingredient> i) {
+		return ingredientRepository.saveAll(i);
 	}
 	
 	public void updateIngredient(Ingredient i) {
