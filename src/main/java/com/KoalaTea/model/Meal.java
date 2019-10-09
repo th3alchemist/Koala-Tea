@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,7 +25,6 @@ public class Meal {
 	@Column(name="time")
 	private Time time;
 	
-	@ManyToOne
 	@JoinColumn(name="mealplanid")
 	private MealPlan mealPlan;
 

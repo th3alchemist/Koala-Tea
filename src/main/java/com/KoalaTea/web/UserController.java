@@ -36,7 +36,6 @@ public class UserController {
 	
 	@PostMapping(value="/insert")
 	public User insertUser(@RequestBody User u) {
-		System.out.println("hit the user insert endpoint");
 		return userService.insertUser(u);
 	}
 	

@@ -30,10 +30,11 @@ public class User {
 	private String address;
 	@Column(name="dateofbirth")
 	private Date dateOfBirth;
-
-  public User() {
+	
+	public User() {
 		super();
 	}
+	
 	public User(int id, String email, String password, String fname, String lname, String address, Date dateOfBirth) {
 		super();
 		this.id = id;

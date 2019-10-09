@@ -9,11 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name="recipe")
@@ -153,8 +149,5 @@ public class Recipe {
 		return "Recipe [id=" + id + ", title=" + title + ", instructions=" + instructions + ", shared=" + shared
 				+ ", user=" + user + ", cookBook=" + cookBook + "]";
 	}
-
-	
-
 	
 }
