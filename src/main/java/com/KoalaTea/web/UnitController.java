@@ -22,8 +22,6 @@ import com.KoalaTea.model.restModel.SpoonacularError;
 import com.KoalaTea.model.Unit;
 import com.KoalaTea.service.UnitService;
 
-import com.KoalaTea.model.restModel.SpoonRest;
-
 @CrossOrigin
 @RestController
 @RequestMapping(value="/unit")

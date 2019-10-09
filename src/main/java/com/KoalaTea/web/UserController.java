@@ -61,6 +61,8 @@ public class UserController {
 	
 	@PostMapping(value="/login2")
 	public User validateLogin2(@RequestBody User u) {
-		return userService.validateLogin(u.getEmail(), u.getPassword());
+		System.out.println("entered login2 with user object");
+//		return userService.validateLogin(u.getEmail(), u.getPassword());
+		return null;
 	}
 }
