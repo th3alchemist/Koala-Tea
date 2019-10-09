@@ -32,8 +32,8 @@ public class RecipeController {
 	}
 	
 	@PostMapping(value="/insert")
-	public void insertRecipe(@RequestBody Recipe r) {
-		recipeService.insertRecipe(r);
+	public Recipe insertRecipe(@RequestBody Recipe r) {
+		return recipeService.insertRecipe(r);
 	}
 	
 	@GetMapping(value="/{id}")

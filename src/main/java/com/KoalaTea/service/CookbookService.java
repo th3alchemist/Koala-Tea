@@ -27,8 +27,8 @@ public class CookbookService {
 		return cookbookRepository.findByUser(user);
 	}
 	
-	public void insertCookbook(CookBook c) {
-		cookbookRepository.save(c);
+	public CookBook insertCookbook(CookBook c) {
+		return cookbookRepository.save(c);
 	}
 	
 	public void deleteCookbook(CookBook c) {

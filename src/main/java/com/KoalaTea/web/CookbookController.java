@@ -35,8 +35,8 @@ public class CookbookController {
 	}
 	
 	@PostMapping(value="/insert")
-	public void insertCookbook(@RequestBody CookBook c) {
-		cookbookService.insertCookbook(c);
+	public CookBook insertCookbook(@RequestBody CookBook c) {
+		return cookbookService.insertCookbook(c);
 	}
 	
 	@GetMapping(value="/{id}")

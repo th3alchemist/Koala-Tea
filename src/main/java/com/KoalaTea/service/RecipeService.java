@@ -26,8 +26,8 @@ public class RecipeService {
 		return recipeRepository.findByCookBook(cookBook);
 	}
 	
-	public void insertRecipe(Recipe r) {
-		recipeRepository.save(r);
+	public Recipe insertRecipe(Recipe r) {
+		return recipeRepository.save(r);
 	}
 	
 	public void deleteRecipe(Recipe r) {
