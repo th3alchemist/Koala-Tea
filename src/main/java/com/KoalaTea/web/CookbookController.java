@@ -45,7 +45,7 @@ public class CookbookController {
 	}
 	
 	@PostMapping(value="/byUser")
-	public CookBook getCookbookByUser(@RequestBody User user) {
+	public List<CookBook> getCookbookByUser(@RequestBody User user) {
 		return cookbookService.findByUser(user);
 	}
 	

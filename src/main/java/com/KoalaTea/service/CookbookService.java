@@ -23,7 +23,7 @@ public class CookbookService {
 		return cookbookRepository.findById(id);
 	}
 	
-	public CookBook findByUser(User user) {
+	public List<CookBook> findByUser(User user) {
 		return cookbookRepository.findByUser(user);
 	}
 	
