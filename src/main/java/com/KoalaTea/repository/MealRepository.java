@@ -14,6 +14,6 @@ public interface MealRepository extends JpaRepository<Meal, Integer> {
 	public List<Meal> findAll();
 	public Meal findById(int id);
 	public Meal findByMealPlan(MealPlan mp);
-	public <S extends Meal> S save(Meal m);
+	public <S extends Meal> S save(S m);
 	public void delete(Meal m);	
 }

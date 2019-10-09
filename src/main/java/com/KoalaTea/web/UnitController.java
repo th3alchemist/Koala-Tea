@@ -15,14 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.KoalaTea.model.restModel.Joke;
-import com.KoalaTea.model.restModel.SpoonacularIngredient;
-import com.KoalaTea.model.restModel.SpoonacularRecipe;
-import com.KoalaTea.model.restModel.SpoonacularError;
 import com.KoalaTea.model.Unit;
 import com.KoalaTea.service.UnitService;
 
-import com.KoalaTea.model.restModel.SpoonRest;
 
 @CrossOrigin
 @RestController
