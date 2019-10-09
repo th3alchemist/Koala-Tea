@@ -35,8 +35,9 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/insert")
-	public void insertUser(@RequestBody User u) {
-		userService.insertUser(u);
+	public User insertUser(@RequestBody User u) {
+		System.out.println("hit the user insert endpoint");
+		return userService.insertUser(u);
 	}
 	
 	@PostMapping(value="/delete")
