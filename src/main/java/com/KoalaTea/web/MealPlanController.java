@@ -34,8 +34,8 @@ public class MealPlanController {
 	}
 	
 	@PostMapping(value="/insert")
-	public void insertMealPlan(@RequestBody MealPlan mp) {
-		mealplanService.insertMealPlan(mp);
+	public MealPlan insertMealPlan(@RequestBody MealPlan mp) {
+		return mealplanService.insertMealPlan(mp);
 	}
 	
 	@GetMapping(value="/{id}")

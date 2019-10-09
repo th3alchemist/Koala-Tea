@@ -27,8 +27,8 @@ public class MealPlanService {
 		return mealplanRepository.findByUser(user);
 	}
 	
-	public void insertMealPlan(MealPlan c) {
-		mealplanRepository.save(c);
+	public MealPlan insertMealPlan(MealPlan c) {
+		return mealplanRepository.save(c);
 	}
 	
 	public void deleteMealPlan(MealPlan c) {

@@ -23,12 +23,12 @@ public class CookbookService {
 		return cookbookRepository.findById(id);
 	}
 	
-	public CookBook findByUser(User user) {
+	public List<CookBook> findByUser(User user) {
 		return cookbookRepository.findByUser(user);
 	}
 	
-	public void insertCookbook(CookBook c) {
-		cookbookRepository.save(c);
+	public CookBook insertCookbook(CookBook c) {
+		return cookbookRepository.save(c);
 	}
 	
 	public void deleteCookbook(CookBook c) {

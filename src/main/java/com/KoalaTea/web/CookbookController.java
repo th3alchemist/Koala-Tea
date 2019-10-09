@@ -35,8 +35,8 @@ public class CookbookController {
 	}
 	
 	@PostMapping(value="/insert")
-	public void insertCookbook(@RequestBody CookBook c) {
-		cookbookService.insertCookbook(c);
+	public CookBook insertCookbook(@RequestBody CookBook c) {
+		return cookbookService.insertCookbook(c);
 	}
 	
 	@GetMapping(value="/{id}")
@@ -45,7 +45,7 @@ public class CookbookController {
 	}
 	
 	@PostMapping(value="/byUser")
-	public CookBook getCookbookByUser(@RequestBody User user) {
+	public List<CookBook> getCookbookByUser(@RequestBody User user) {
 		return cookbookService.findByUser(user);
 	}
 	

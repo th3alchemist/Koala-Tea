@@ -31,9 +31,9 @@ public class IngredientController {
 		return ingredientService.findAll();
 	}
 	
-	@PostMapping(value="/insert")
-	public void insertIngredient(@RequestBody List<Ingredient> i) {
-		ingredientService.insertIngredient(i);
+	@PostMapping(value="/insert", produces=MediaType.APPLICATION_JSON_VALUE)
+	public List<Ingredient> insertIngredient(@RequestBody List<Ingredient> i) {
+		return ingredientService.insertIngredient(i);
 	}
 	
 	@PostMapping(value="/update")

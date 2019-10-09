@@ -31,9 +31,9 @@ public class RecipeController {
 		return recipeService.findAll();
 	}
 	
-	@PostMapping(value="/insert")
-	public void insertRecipe(@RequestBody Recipe r) {
-		recipeService.insertRecipe(r);
+	@PostMapping(value="/insert", produces = MediaType.APPLICATION_JSON_VALUE)
+	public Recipe insertRecipe(@RequestBody Recipe r) {
+		return recipeService.insertRecipe(r);
 	}
 	
 	@GetMapping(value="/{id}")
