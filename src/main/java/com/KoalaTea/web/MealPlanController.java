@@ -44,7 +44,7 @@ public class MealPlanController {
 	}
 	
 	@PostMapping(value="/byUser")
-	public MealPlan getMealPlanByUser(@RequestBody User user) {
+	public List<MealPlan> getMealPlanByUser(@RequestBody User user) {
 		return mealplanService.findByUser(user);
 	}
 	

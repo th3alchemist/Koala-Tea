@@ -13,7 +13,8 @@ public interface MealRepository extends JpaRepository<Meal, Integer> {
 
 	public List<Meal> findAll();
 	public Meal findById(int id);
-	public Meal findByMealPlan(MealPlan mp);
+	public List<Meal> findByMealPlan(MealPlan mp);
+	public <S extends Meal> List<S> saveAll(Iterable<S> meals);
 	public <S extends Meal> S save(S m);
 	public void delete(Meal m);	
 }
