@@ -15,6 +15,6 @@ public interface IngredientRepository extends JpaRepository<Ingredient, Integer>
 	public Ingredient findById(int id);
 	public List<Ingredient> findByrecipe(Recipe recipe);
 	public <S extends Ingredient> S save(List<Ingredient> i);
-	public <S extends Ingredient> S save(Ingredient i);
+	public <S extends Ingredient> S save(S i);
 	public void delete(Ingredient i);
 }

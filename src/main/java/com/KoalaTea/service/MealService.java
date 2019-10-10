@@ -23,13 +23,17 @@ public class MealService {
 		return mealRepository.findById(id);
 	}
 	
-	public Meal findByMealPlan(MealPlan mp) {
+	public List<Meal> findByMealPlan(MealPlan mp) {
 		return mealRepository.findByMealPlan(mp);
 	}
 	
-	public Meal insertMeal(Meal m) {
-		return mealRepository.save(m);
+	public List<Meal> insertMeal(List<Meal> m) {
+		return mealRepository.saveAll(m);
 	}
+	
+//	public Meal updateMeal(Meal m) {
+//		return mealRepository.save(m);
+//	}
 	
 	public void deleteMeal(Meal m) {
 		mealRepository.delete(m);

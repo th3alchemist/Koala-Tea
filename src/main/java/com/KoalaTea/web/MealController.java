@@ -33,18 +33,23 @@ public class MealController {
 		return mealService.findAll();
 	}
 	
-	@PostMapping(value="/insert")
-	public Meal insertMeal(@RequestBody Meal m) {
+	@PostMapping(value="/insert", produces=MediaType.APPLICATION_JSON_VALUE)
+	public List<Meal> insertMeal(@RequestBody List<Meal> m) {
 		return mealService.insertMeal(m);
 	}
+	
+//	@PostMapping(value="/update")
+//	public Meal updateMeal(@RequestBody Meal m) {
+//		return mealService.updateMeal(m);
+//	}
 	
 	@GetMapping(value="/{id}")
 	public Meal getMealById(@PathVariable int id) {
 		return mealService.findById(id);
 	}
 	
-	@PostMapping(value="/byUser")
-	public Meal getMealByMealPlan(@RequestBody MealPlan mp) {
+	@PostMapping(value="/byMealPlan")
+	public List<Meal> getMealByMealPlan(@RequestBody MealPlan mp) {
 		return mealService.findByMealPlan(mp);
 	}
 	
