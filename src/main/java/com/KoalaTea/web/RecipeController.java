@@ -2,6 +2,9 @@ package com.KoalaTea.web;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -32,8 +35,15 @@ public class RecipeController {
 	}
 	
 	@PostMapping(value="/insert", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Recipe insertRecipe(@RequestBody Recipe r) {
-		return recipeService.insertRecipe(r);
+	public Recipe insertRecipe(@RequestBody Recipe r, HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if(session != null) {
+			System.out.println("WE HAVE A SESSION!!");
+			return recipeService.insertRecipe(r);
+		} else {
+			return null;
+		}
+		
 	}
 	
 	@GetMapping(value="/{id}")
