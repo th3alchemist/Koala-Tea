@@ -31,10 +31,6 @@ public class MealService {
 		return mealRepository.saveAll(m);
 	}
 	
-//	public Meal updateMeal(Meal m) {
-//		return mealRepository.save(m);
-//	}
-	
 	public void deleteMeal(Meal m) {
 		mealRepository.delete(m);
 	}
