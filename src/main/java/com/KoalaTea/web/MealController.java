@@ -38,10 +38,6 @@ public class MealController {
 		return mealService.insertMeal(m);
 	}
 	
-//	@PostMapping(value="/update")
-//	public Meal updateMeal(@RequestBody Meal m) {
-//		return mealService.updateMeal(m);
-//	}
 	
 	@GetMapping(value="/{id}")
 	public Meal getMealById(@PathVariable int id) {
