@@ -23,7 +23,7 @@ public class MealPlanService {
 		return mealplanRepository.findById(id);
 	}
 	
-	public MealPlan findByUser(User user) {
+	public List<MealPlan> findByUser(User user) {
 		return mealplanRepository.findByUser(user);
 	}
 	
