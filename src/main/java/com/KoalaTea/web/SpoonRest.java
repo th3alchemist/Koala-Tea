@@ -14,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import com.KoalaTea.model.Recipe;
 import com.KoalaTea.model.Unit;
 import com.KoalaTea.model.restModel.Joke;
+import com.KoalaTea.model.restModel.SpoonNutritionInfo;
 import com.KoalaTea.model.restModel.SpoonacularError;
 import com.KoalaTea.model.restModel.SpoonacularIngredient;
 import com.KoalaTea.model.restModel.SpoonacularRecipe;
@@ -81,6 +82,13 @@ public class SpoonRest {
 		return retrievedRecipe;
 	}
 	
-	
-	
+	@PostMapping(value="/nutritionInfo")
+	public static SpoonNutritionInfo getSpoonNutritionInfo(@RequestBody String query) {
+		String url = "https://api.spoonacular.com/recipes/quickAnswer?apiKey="
+			     + System.getenv("SPOON_API_KEY")
+			     + "&q=" + query;
+		RestTemplate restTemplate = new RestTemplate();
+		SpoonNutritionInfo retrievedInfo = restTemplate.getForObject(url, SpoonNutritionInfo.class);
+		return retrievedInfo;
+	}
 }
