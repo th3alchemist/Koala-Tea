@@ -1,16 +1,21 @@
 package com.KoalaTea.web;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.KoalaTea.model.restModel.Joke;
+import com.KoalaTea.model.restModel.SpoonNutritionInfo;
 import com.KoalaTea.model.restModel.SpoonacularError;
 import com.KoalaTea.model.restModel.SpoonacularIngredient;
 import com.KoalaTea.model.restModel.SpoonacularRecipe;
 import com.KoalaTea.model.restModel.SpoonacularRecipeResponse;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/spoon")
 public class SpoonRest {
@@ -51,5 +56,15 @@ public class SpoonRest {
 		RestTemplate restTemplate = new RestTemplate();
 		SpoonacularRecipeResponse retrievedRecipe = restTemplate.getForObject(url, SpoonacularRecipeResponse.class);
 		return retrievedRecipe.getResults().get(0);
+	}
+	
+	@PostMapping(value="/nutritionInfo")
+	public static SpoonNutritionInfo getSpoonNutritionInfo(@RequestBody String query) {
+		String url = "https://api.spoonacular.com/recipes/quickAnswer?apiKey="
+			     + System.getenv("SPOON_API_KEY")
+			     + "&q=" + query;
+		RestTemplate restTemplate = new RestTemplate();
+		SpoonNutritionInfo retrievedInfo = restTemplate.getForObject(url, SpoonNutritionInfo.class);
+		return retrievedInfo;
 	}
 }
