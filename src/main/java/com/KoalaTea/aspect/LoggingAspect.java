@@ -22,16 +22,13 @@ public class LoggingAspect {
 	
 	private static final Logger LOG = LogManager.getLogger(LoggingAspect.class);
 	
-//	@Pointcut("execution( * com.KoalaTea.web * (..))")
-//	public void allWebMethodsPointCut() {}
-//	
 	@Pointcut("within(com.KoalaTea.service..*)")
 	public void inServiceLayer() {}
 	
-//	@Before("allWebMethodsPointCut()")
-//	public void logBeforeMethodCall(JoinPoint jp) {
-//		LOG.info("The " + jp.getSignature().getName() + " method is going to be called");
-//	}
+	@Before("inServiceLayer()")
+	public void logBefore(JoinPoint jp) {
+		LOG.info("The " + jp.getSignature().getName() + " method is going to be called");
+	}
 	
 	@AfterReturning(pointcut="inServiceLayer()", returning="returnedObject")
 	public void logAfterReturning(JoinPoint jp, Object returnedObject) {

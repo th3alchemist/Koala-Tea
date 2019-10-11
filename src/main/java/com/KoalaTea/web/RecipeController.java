@@ -36,14 +36,7 @@ public class RecipeController {
 	
 	@PostMapping(value="/insert", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Recipe insertRecipe(@RequestBody Recipe r, HttpServletRequest request) {
-		HttpSession session = request.getSession(false);
-		if(session != null) {
-			System.out.println("WE HAVE A SESSION!!");
-			return recipeService.insertRecipe(r);
-		} else {
-			return null;
-		}
-		
+		return recipeService.insertRecipe(r);
 	}
 	
 	@GetMapping(value="/{id}")

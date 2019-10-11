@@ -64,14 +64,6 @@ public class UserController {
 	
 	@PostMapping(value="/login2")
 	public User validateLogin2(@RequestBody User u, HttpServletRequest request) {
-		User returnedUser = null;
-		returnedUser = userService.validateLogin(u.getEmail(), u.getPassword());
-		if(returnedUser != null) {
-			if(u.getPassword().equals(returnedUser.getPassword())) {
-				HttpSession session = request.getSession();
-				session.setAttribute("userId", returnedUser.getId());
-			}
-		}
-		return returnedUser;
+		return userService.validateLogin(u.getEmail(), u.getPassword());
 	}
 }
