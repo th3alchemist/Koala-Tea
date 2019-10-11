@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody; 
 import org.springframework.web.client.RestTemplate;
 
+import com.KoalaTea.model.Recipe;
+import com.KoalaTea.model.Unit;
 import com.KoalaTea.model.restModel.Joke;
 import com.KoalaTea.model.restModel.SpoonacularError;
 import com.KoalaTea.model.restModel.SpoonacularIngredient;
@@ -56,13 +58,9 @@ public class SpoonRest {
 				     + System.getenv("SPOON_API_KEY")
 				     + "&" + query;
 		
-		System.err.println(url);
-
 		RestTemplate restTemplate = new RestTemplate();
 		SpoonacularRecipeResponse retrievedRecipe = restTemplate.getForObject(url, SpoonacularRecipeResponse.class);
-		
-		System.err.println(retrievedRecipe);
-		
+				
 		if(retrievedRecipe.getResults().size() == 0) {
 			SpoonacularRecipe rtn =  new SpoonacularRecipe();
 			rtn.setTitle("No recipe found.");
@@ -71,4 +69,18 @@ public class SpoonRest {
 		else
 			return retrievedRecipe.getResults().get(0);
 	}
+	
+	
+	@GetMapping(value="/recipe/{id}")
+	public Object getRecipeById(@PathVariable int id) {
+		String url = "https://api.spoonacular.com/recipes/" + id + "/information?apiKey=" + System.getenv("SPOON_API_KEY");
+		
+		RestTemplate restTemplate = new RestTemplate();
+		Recipe retrievedRecipe = restTemplate.getForObject(url, Recipe.class);
+		
+		return retrievedRecipe;
+	}
+	
+	
+	
 }
