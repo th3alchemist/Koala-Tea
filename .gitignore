@@ -6,6 +6,7 @@
 /src/main/webapp/Koala-Tea-WebApp/tmp
 /src/main/webapp/Koala-Tea-WebApp/out-tsc
 /bin
+/logs
 
 # dependencies
 src/main/resources/webapp/node_modules
