@@ -2,6 +2,9 @@ package com.KoalaTea.web;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -60,7 +63,15 @@ public class UserController {
 	}
 	
 	@PostMapping(value="/login2")
-	public User validateLogin2(@RequestBody User u) {
-		return userService.validateLogin(u.getEmail(), u.getPassword());
+	public User validateLogin2(@RequestBody User u, HttpServletRequest request) {
+		User returnedUser = null;
+		returnedUser = userService.validateLogin(u.getEmail(), u.getPassword());
+		if(returnedUser != null) {
+			if(u.getPassword().equals(returnedUser.getPassword())) {
+				HttpSession session = request.getSession();
+				session.setAttribute("userId", returnedUser.getId());
+			}
+		}
+		return returnedUser;
 	}
 }
