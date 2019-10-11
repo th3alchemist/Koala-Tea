@@ -22,6 +22,7 @@ public class LoggingAspect {
 	
 	private static final Logger LOG = LogManager.getLogger(LoggingAspect.class);
 	
+
 	@Pointcut("within(com.KoalaTea.service..*)")
 	public void inServiceLayer() {}
 	
@@ -39,5 +40,4 @@ public class LoggingAspect {
 	public void logAfterThrowing(JoinPoint jp, Exception exceptionThrown) {
 		LOG.info("The " + jp.getSignature().getName() + " method just threw " + exceptionThrown);
 	}
-
 }
